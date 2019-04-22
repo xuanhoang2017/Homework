@@ -33,7 +33,7 @@
                 <pre>@item.note</pre>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.datetime)
+                @item.datetime.ToString("dd/MM/yyyy")
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
