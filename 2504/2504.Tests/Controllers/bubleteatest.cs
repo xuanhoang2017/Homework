@@ -12,6 +12,9 @@ namespace _2504.Tests.Controllers
     [TestClass]
     public class bubleteatest
     {
+
+
+
         [TestMethod]
         public void TestIndex()
         {
@@ -26,7 +29,10 @@ namespace _2504.Tests.Controllers
             Assert.IsNotNull(model);
             Assert.AreEqual(db.BubleTeas.Count(), model.Count);
 
+
         }
+
+
         [TestMethod]
         public void TestEditG()
         {
@@ -39,13 +45,38 @@ namespace _2504.Tests.Controllers
             Assert.IsNotNull(result1);
             var model = result1.Model as BubleTea;
             Assert.AreEqual(item.id, model.id);
-
-
         }
 
 
 
+        [TestMethod]
+        public void TestCreate()
+        {
+            var controller = new bubleteaController();
+            var result = controller.Create() as ViewResult;
+            Assert.IsNotNull(result); ;
+        }
 
+
+
+        [TestMethod]
+        public void TestDetails()
+        {
+            var controller = new bubleteaController();
+            var db = new CS4PEEntities();
+            var item = db.BubleTeas.First();
+
+            var result = controller.Details(item.id);
+            var view = result as ViewResult;
+            Assert.IsNotNull(view);
+            var model = view.Model as BubleTea;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(item.id, model.id);
+
+            var result0 = controller.Details(0);
+            Assert.IsInstanceOfType(result0, typeof(HttpNotFoundResult));
+
+        }
 
 
 
