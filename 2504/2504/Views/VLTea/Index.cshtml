@@ -1,0 +1,44 @@
+﻿@model IEnumerable<_2504.Models.BubleTea>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Trà Sủa VanLang</h2>
+
+<p>
+    <a href="@Url.Action("Create")">Them moi</a>
+<table class="table">
+    <tr>
+        <th>
+            Trà sữa
+        </th>
+        <th>
+            Topping
+        </th>
+        <th>
+            Giá tiền
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <mark>@item.Name</mark>
+        </td>
+        <td>
+            @item.Topping
+        </td>
+        <td>
+            @item.Price.ToString("N0")
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", new { id = item.id })">Sua</a>|
+            <a href="@Url.Action("Details", new { id = item.id })">Chi tiet</a>|
+            <a href="@Url.Action("Delete", new { id = item.id })">Xoa</a>
+        </td>
+    </tr>
+}
+
+</table>
