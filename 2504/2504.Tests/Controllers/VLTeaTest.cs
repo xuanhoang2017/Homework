@@ -21,7 +21,7 @@ namespace _2504.Tests.Controllers
 
             var view = result as ViewResult;
             Assert.IsNotNull(view);
-            var model = view.Model as List<Buble>;
+            var model = view.Model as List<BubleTea>;
             Assert.IsNotNull(model);
             Assert.AreEqual(db.BubleTeas.Count(), model.Count);
 
